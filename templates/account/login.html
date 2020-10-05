@@ -22,30 +22,17 @@
               <a class="btn btn-default button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
               <button class="btn btn-primary primaryAction" type="submit">{% trans "Sign In" %}</button>
             </form>
+
             <div style="color:#878787; text-align: center; margin: 1rem 0">OR</div>
 
             {% get_providers as socialaccount_providers %}
 
             {% if socialaccount_providers %}
-            <!-- <p>{% blocktrans with site.name as site_name %}Please sign in with one
-            of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-            for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
             <div class="socialaccount_ballot">
-
-              <ul class="socialaccount_providers">
-                <button class="btn">
+              <ul class="list-group list-group-horizontal-md">
                   {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                </button>
               </ul>
-
-              <div class="login-or">{% trans 'or' %}</div>
-
-            </div> -->
-
-              <button class="btn btn-outline-dark">
-                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-              </button>
+            </div>
 
             {% include "socialaccount/snippets/login_extra.html" %}
 

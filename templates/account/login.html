@@ -1,6 +1,4 @@
 {% extends "account/base.html" %}
-{% load socialaccount %}
-{% providers_media_js %}
 
 {% load i18n %}
 {% load account socialaccount %}
@@ -25,7 +23,7 @@
               <button class="btn btn-primary primaryAction" type="submit">{% trans "Sign In" %}</button>
             </form>
 
-            <div style="color:#878787; text-align: center; margin: 1rem 0">OR</div>
+            <div style="color:#878787; text-align: center; margin: 1rem 0">OR Login With</div>
 
             {% get_providers as socialaccount_providers %}
 
@@ -35,6 +33,8 @@
                   {% include "socialaccount/snippets/provider_list.html" with process="login" %}
               </ul>
             </div> -->
+            {% load socialaccount %}
+            {% providers_media_js %}
 
             <a href="{% provider_login_url "google" %}" class="btn btn-danger btn-sm" >google</a>
             <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="btn btn-indigo btn-sm">Facebook</a>

@@ -27,13 +27,13 @@
             </div>
 
             <p class="lead">
-              {% if product.discount_price %}
+              {% if object.discount_price %}
                 <span class="mr-1">
-                <del>${{product.price}}</del>
+                <del>${{object.price}}</del>
                 </span>
-                <span>${{product.discount_price}}</span>
+                <span>${{object.discount_price}}</span>
               {% else %}
-                <span>${{product.price}}</span>
+                <span>${{object.price}}</span>
               {% endif %}
             </p>
 
@@ -45,8 +45,11 @@
 
             <form class="d-flex justify-content-left">
               <!-- Default input -->
-              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+              <!-- <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px"> -->
               <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </button>
+              <button class="btn btn-danger btn-md my-0 p" type="submit">Remove from cart
                 <i class="fas fa-shopping-cart ml-1"></i>
               </button>
 

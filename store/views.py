@@ -1,21 +1,28 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
 from .models import Product
 
-def index(request):
-    products = Product.objects.all()
+class ProductListView(ListView):
+    model = Product
+    template_name = 'home.html'
+    context_object_name = 'products'
+    paginate_by = 12
 
-    context = {
-        'products': products
-    }
-    return render(request, 'home.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Home'
 
-def product(request, pk):
-    product = get_object_or_404(Product ,id=pk)
+        return context
 
-    context = {
-        'product': product
-    }
-    return render(request, 'product.html', context)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = get_object_or_404(Product, pk=self.kwargs['pk']).name
+
+        return context
 
 def checkout(request):
     return render(request, 'checkout.html')
